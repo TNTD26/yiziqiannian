@@ -85,6 +85,8 @@ docs/                       作品文档（见下）
 ```
 
 > 仓库根目录的 `index.html` 是 GitHub Pages 入口：与 `START.html` 内容一致，仅额外附带 `og:image` 等社交预览元数据；它不属于交付包，交付包内的 `START.html` 与 `打开作品.html` 仍保持字节完全一致。
+>
+> **改完 `START.html` 后跑一次 `tools/sync-pages-entry.ps1`**，它会同步 `打开作品.html`（字节复制）并重建 `index.html`（START.html + PAGES-OG 块）。加 `-Check` 只校验不写，适合放进提交前检查。
 
 ## 文档
 

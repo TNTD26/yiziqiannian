@@ -412,7 +412,7 @@ function showResult(res, feat) {
 
   $("#srcBadge").textContent =
     res.source === "cloud" ? "CLOUD VISION" : res.source === "hybrid" ? "HYBRID"
-      : res.source === "cnn" ? "CNN CLASSIFIER" : "LOCAL ENGINE";
+      : res.source === "cnn" ? "OFFLINE CNN" : "LOCAL ENGINE";
 
   $("#resultHero").innerHTML =
     `<div class="rh-result">
@@ -859,7 +859,7 @@ function updateEngineNote() {
   $("#footerEngine").textContent = ready
     ? `Cloud Vision: ${state.cfg.model} / Local Fallback`
     : "Offline CNN Classifier / Local Fallback / Cloud Ready";
-  $("#srcBadge").textContent = ready ? "CLOUD READY" : "LOCAL ENGINE";
+  $("#srcBadge").textContent = ready ? "CLOUD READY" : "OFFLINE CNN";
 }
 
 /* ============================================================
