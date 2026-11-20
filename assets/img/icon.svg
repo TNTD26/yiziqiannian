@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="plate" x1="0" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#0f1216"/>
+      <stop offset="0.55" stop-color="#0a0c0f"/>
+      <stop offset="1" stop-color="#050607"/>
+    </linearGradient>
+    <linearGradient id="bone" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#f6ecd6"/>
+      <stop offset="0.45" stop-color="#e8d9b8"/>
+      <stop offset="1" stop-color="#cdb488"/>
+    </linearGradient>
+    <linearGradient id="inkG" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#8f2f22"/>
+      <stop offset="1" stop-color="#b8513a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.62">
+      <stop offset="0" stop-color="#c9a96a" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#c9a96a" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="clipPlate">
+      <rect width="512" height="512" rx="112"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#clipPlate)">
+    <rect width="512" height="512" fill="url(#plate)"/>
+    <rect width="512" height="512" fill="url(#glow)"/>
+    <!-- 内圈细金边 -->
+    <rect x="16" y="16" width="480" height="480" rx="98" fill="none"
+          stroke="#c9a96a" stroke-opacity="0.30" stroke-width="2"/>
+
+    <!-- 甲骨片：不规则兽骨轮廓 -->
+    <g transform="translate(256 256) rotate(-4) translate(-256 -256)">
+      <path d="M256 78
+               C300 76 336 92 356 118
+               C378 146 388 176 386 208
+               C384 244 372 272 366 306
+               C361 336 366 366 350 392
+               C332 421 300 434 262 436
+               C222 438 186 428 158 406
+               C126 381 110 350 112 314
+               C114 276 126 246 130 210
+               C134 170 130 132 152 108
+               C174 84 212 80 256 78 Z"
+            fill="url(#bone)"/>
+      <path d="M256 78
+               C300 76 336 92 356 118
+               C378 146 388 176 386 208
+               C384 244 372 272 366 306
+               C361 336 366 366 350 392
+               C332 421 300 434 262 436
+               C222 438 186 428 158 406
+               C126 381 110 350 112 314
+               C114 276 126 246 130 210
+               C134 170 130 132 152 108
+               C174 84 212 80 256 78 Z"
+            fill="none" stroke="#a8894f" stroke-opacity="0.45" stroke-width="3"/>
+
+      <!-- 骨的纹理：细裂纹 -->
+      <g stroke="#a8894f" stroke-opacity="0.30" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M150 150 C176 178 176 214 158 250"/>
+        <path d="M368 172 C344 200 346 238 366 270"/>
+        <path d="M196 402 C214 372 210 344 194 322"/>
+        <path d="M320 404 C304 376 306 350 322 328"/>
+      </g>
+
+      <!-- 刻辞：甲骨文的「日」——椭圆环，中缀一点 -->
+      <g>
+        <path d="M256 168
+                 C296 168 326 198 326 238
+                 C326 282 296 312 256 312
+                 C216 312 186 282 186 238
+                 C186 198 216 168 256 168 Z
+                 M256 204
+                 C236 204 222 219 222 238
+                 C222 259 236 274 256 274
+                 C276 274 290 259 290 238
+                 C290 219 276 204 256 204 Z"
+              fill="url(#inkG)" fill-rule="evenodd"/>
+        <path d="M244 232 h24 v13 h-24 Z" fill="url(#inkG)"/>
+        <!-- 卜兆：两道短竖，暗示占卜裂纹 -->
+        <g stroke="#8f2f22" stroke-opacity="0.85" stroke-width="9" stroke-linecap="round" fill="none">
+          <path d="M172 348 C186 360 190 374 186 390"/>
+          <path d="M340 348 C326 360 322 374 326 390"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

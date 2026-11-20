@@ -1,0 +1,19 @@
+{
+  "name": "一字千年 · AI 甲骨文数字生命馆",
+  "short_name": "一字千年",
+  "description": "上传一片甲骨，让 AI 找回它失落三千年的名字。",
+  "lang": "zh-CN",
+  "start_url": "./START.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b0c0d",
+  "theme_color": "#0d0f11",
+  "categories": ["education", "entertainment"],
+  "icons": [
+    { "src": "./assets/img/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "./assets/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
