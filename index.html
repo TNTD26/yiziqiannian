@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一字千年 · AI 甲骨文数字生命馆</title>
+  <meta name="author" content="王博彦">
+  <meta name="description" content="AI 甲骨文识别与生成 · 上传甲骨文字形，AI 推测汉字、还原字源、生成数字艺术作品">
+  <meta name="theme-color" content="#0d0f11">
+  <meta property="og:title" content="一字千年 · AI 甲骨文数字生命馆">
+  <meta property="og:description" content="上传一片甲骨，让 AI 找回它失落三千年的名字。">
+  <meta property="og:type" content="website">
+  <!-- 图标：甲骨「日」字 -->
+  <link rel="icon" href="assets/img/favicon.ico">
+  <link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" id="brandGlyph"></span>
+      <span>一字千年</span>
+    </div>
+    <nav id="mainNav">
+      <a href="#home">序章</a>
+      <a href="#explore">汉字探索</a>
+      <a href="#evolution">文字演化</a>
+      <a href="#oracle-ai">AI 识别</a>
+      <a href="#ai-lab">造字实验室</a>
+      <a href="#life-3d">3D 生命</a>
+      <a href="#gallery">数字展厅</a>
+      <a href="#about">关于</a>
+    </nav>
+    <div class="top-actions">
+      <button class="ghost-btn" id="cfgBtn">⚙ AI 设置</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section id="home" class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">AIGC DIGITAL CULTURE · AI ORACLE BONE ENGINE</p>
+        <h1>一字<br><em>千年</em></h1>
+        <p class="hero-sub">上传一片甲骨，<br>让 AI 找回它失落三千年的名字。</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#oracle-ai">体验 AI 识别 <span>→</span></a>
+          <a class="text-btn" href="#evolution">先看文字演化</a>
+        </div>
+        <ul class="hero-facts">
+          <li><b id="factChars">24</b><span>字形条目</span></li>
+          <li><b>5</b><span>书体时代</span></li>
+          <li><b id="factGlyphs">120</b><span>矢量字形</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-oracle">
+        <div class="orbit orbit-a"></div>
+        <div class="orbit orbit-b"></div>
+        <div class="seal">
+          <div class="seal-top">ORACLE BONE</div>
+          <div class="seal-character" id="heroGlyph"></div>
+          <div class="seal-bottom" id="heroLabel">甲 骨 文</div>
+        </div>
+        <div class="floating-note note-1">形</div>
+        <div class="floating-note note-2">意</div>
+        <div class="floating-note note-3">生</div>
+      </div>
+    </section>
+
+    <section class="intro-strip">
+      <div><span>01</span><strong>溯源</strong><small>矢量还原真实古文字形</small></div>
+      <div><span>02</span><strong>识别</strong><small>AI 推测未知甲骨文字</small></div>
+      <div><span>03</span><strong>演化</strong><small>看见三千年的时间轨迹</small></div>
+      <div><span>04</span><strong>生成</strong><small>让 AI 再造数字艺术</small></div>
+    </section>
+
+    <!-- ============ 汉字探索 ============ -->
+    <section id="explore" class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">01 / CHARACTER EXPLORER</p>
+          <h2>汉字探索</h2>
+        </div>
+        <p class="section-desc">二十四个象形字，全部以手绘矢量古文字形呈现，而非简体字渲染。</p>
+      </div>
+
+      <div class="explorer">
+        <aside class="char-list" id="charList"></aside>
+        <div class="char-stage">
+          <div class="stage-top">
+            <span id="charCategory">象形字</span>
+            <span id="charIndex">01 / 12</span>
+          </div>
+
+          <div class="stage-glyph-row">
+            <div class="stage-glyph main" id="stageGlyph"></div>
+            <div class="stage-side">
+              <div class="side-glyph" id="sideBronze"><small>金文</small></div>
+              <div class="side-glyph" id="sideSeal"><small>小篆</small></div>
+              <div class="side-glyph" id="sideModern"><small>楷书</small></div>
+            </div>
+          </div>
+
+          <div class="pinyin-row">
+            <b id="charPinyin">rì</b>
+            <span id="charGloss">太阳；白天；一昼夜</span>
+          </div>
+
+          <p class="char-poem" id="charPoem"></p>
+
+          <div class="char-info">
+            <div>
+              <span class="label">ORIGIN · 字源</span>
+              <p id="charOrigin"></p>
+            </div>
+            <div>
+              <span class="label">
+                AI INTERPRETATION · AI 解读
+                <button class="mini-btn" id="aiRewriteBtn" title="用云端大模型重写这段展签文案">✦ AI 重写</button>
+              </span>
+              <p id="charMeaning"></p>
+            </div>
+          </div>
+          <div class="tag-row" id="charTags"></div>
+          <button class="outline-btn" id="evolveBtn">查看演化轨迹 →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 演化时间轴 ============ -->
+    <section id="evolution" class="section dark-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">02 / EVOLUTION TIMELINE</p>
+          <h2>文字演化</h2>
+        </div>
+        <p class="section-desc">从刀刻到范铸，从圆转到方折——同一个字，五种真实字形。</p>
+      </div>
+
+      <div class="timeline" id="timeline"></div>
+      <div class="timeline-detail">
+        <div class="timeline-glyph" id="timelineGlyph"></div>
+        <div class="timeline-text">
+          <span class="label">CURRENT ERA</span>
+          <h3 id="timelineTitle">甲骨文</h3>
+          <p class="timeline-year" id="timelineYear"></p>
+          <p id="timelineDesc"></p>
+          <span class="tech-chip" id="timelineTech"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AI 甲骨文识别馆 ============ -->
+    <section id="oracle-ai" class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">03 / AI ORACLE RECOGNITION</p>
+          <h2>AI 甲骨文识别馆</h2>
+        </div>
+        <p class="section-desc">
+          上传一张甲骨文图片 → AI 提取笔画特征 → 推测对应汉字 →
+          还原字源脉络 → 一键生成数字艺术作品。
+        </p>
+      </div>
+
+      <div class="recognizer">
+
+        <!-- 左：输入 -->
+        <div class="rec-input">
+          <div class="dropzone" id="dropzone" role="button" tabindex="0"
+               aria-label="上传甲骨文图片，也可直接粘贴">
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            <div class="dz-inner" id="dzInner">
+              <div class="dz-icon" id="dzPreviewWrap"></div>
+              <b>拖入图片 / 点击上传</b>
+              <small>支持甲骨拓片、字形照片或手绘；也可点击下方取样</small>
+            </div>
+          </div>
+
+          <div class="sample-row">
+            <span class="label">或从字形库取样</span>
+            <div class="sample-chips" id="sampleChips"></div>
+          </div>
+
+          <div class="rec-actions">
+            <button class="primary-btn wide" id="analyzeBtn" disabled>
+              <span id="analyzeLabel">开始 AI 分析</span> <span>→</span>
+            </button>
+            <button class="ghost-btn" id="clearBtn">清空</button>
+          </div>
+
+          <div class="engine-note" id="engineNote"></div>
+        </div>
+
+        <!-- 中：分析过程 -->
+        <div class="rec-process">
+          <div class="proc-head">
+            <span class="label">ANALYSIS PIPELINE</span>
+            <span class="proc-state" id="procState">等待输入</span>
+          </div>
+
+          <div class="proc-grid">
+            <div class="proc-cell">
+              <canvas id="cvBinary" width="120" height="120"></canvas>
+              <small>① 二值化 · 归一化</small>
+            </div>
+            <div class="proc-cell">
+              <canvas id="cvGrid" width="120" height="120"></canvas>
+              <small>② 12×12 密度投影</small>
+            </div>
+            <div class="proc-cell">
+              <div class="topo-box" id="topoBox">
+                <div><b id="topoEnd">—</b><span>端点</span></div>
+                <div><b id="topoJun">—</b><span>交叉</span></div>
+                <div><b id="topoDen">—</b><span>墨量</span></div>
+                <div><b id="topoSym">—</b><span>对称</span></div>
+              </div>
+              <small>③ 骨架拓扑统计</small>
+            </div>
+          </div>
+
+          <div class="proc-log" id="procLog">
+            <p class="log-idle">AI 引擎待命。上传图像后，将依次执行灰度化、Otsu 二值化、
+              包围盒裁剪、网格密度投影、骨架拓扑统计与字形库向量比对。</p>
+          </div>
+        </div>
+
+        <!-- 右：结果 -->
+        <div class="rec-result">
+          <div class="proc-head">
+            <span class="label">RECOGNITION RESULT</span>
+            <span class="proc-state" id="srcBadge">LOCAL ENGINE</span>
+          </div>
+
+          <div class="result-hero" id="resultHero">
+            <div class="rh-empty">尚未识别</div>
+          </div>
+
+          <div class="cand-list" id="candList"></div>
+
+          <div class="reason-box" id="reasonBox"></div>
+
+          <button class="outline-btn wide" id="toLabBtn" disabled>
+            用这个字生成数字艺术 →
+          </button>
+          <button class="outline-btn wide" id="toLifeBtn" disabled>
+            ✦ 孕育 3D 数字生命 →
+          </button>
+        </div>
+      </div>
+
+      <!-- 还原链条 -->
+      <div class="restore-chain" id="restoreChain">
+        <div class="rc-head">
+          <span class="label">CHARACTER RESTORATION · 字源还原</span>
+          <span class="rc-sub" id="rcSub">识别完成后展示该字从甲骨文到楷书的完整还原链</span>
+        </div>
+        <div class="rc-items" id="rcItems"></div>
+      </div>
+    </section>
+
+    <!-- ============ AI 造字实验室 ============ -->
+    <section id="ai-lab" class="section dark-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">04 / AIGC CREATIVE LAB</p>
+          <h2>AI 造字实验室</h2>
+        </div>
+        <p class="section-desc">选择字与书体，由 Canvas 实时绘制一幅可导出的数字文化作品。</p>
+      </div>
+
+      <div class="lab">
+        <div class="lab-control">
+          <label for="wordInput">创作汉字</label>
+          <div class="input-row">
+            <input id="wordInput" maxlength="1" value="鹿" aria-label="输入汉字">
+            <button class="primary-btn" id="generateBtn">生成</button>
+          </div>
+          <div class="quick-chars" id="quickChars"></div>
+
+          <label>取形书体</label>
+          <div class="style-grid era-picker" id="eraPicker"></div>
+
+          <label>视觉语言</label>
+          <div class="style-grid" id="styleGrid">
+            <button class="style-chip active" data-style="oracle">龟骨卜辞</button>
+            <button class="style-chip" data-style="bronze">青铜铭文</button>
+            <button class="style-chip" data-style="ink">水墨流体</button>
+            <button class="style-chip" data-style="particle">数字粒子</button>
+          </div>
+
+          <div class="lab-actions">
+            <button class="outline-btn wide" id="exportBtn">⤓ 导出作品 PNG</button>
+            <button class="ghost-btn wide" id="saveBtn">＋ 收藏到展厅</button>
+            <button class="outline-btn wide" id="exportHdBtn">⤓ 高清版 2400px</button>
+            <button class="ghost-btn wide" id="exportPosterBtn">⤓ 展览海报（竖版）</button>
+          </div>
+        </div>
+
+        <div class="generation-card">
+          <div class="generation-meta">
+            <span>GENERATED ARTWORK</span>
+            <span id="generationStyle">ORACLE BONE</span>
+          </div>
+          <div class="generation-canvas" id="generationCanvas">
+            <canvas id="artCanvas" width="900" height="900"></canvas>
+            <div class="scanline"></div>
+          </div>
+          <div class="generation-footer">
+            <div>
+              <strong id="generatedTitle">鹿 · 龟骨卜辞</strong>
+              <p id="generatedCaption"></p>
+            </div>
+            <span class="gen-code" id="genCode">#0000</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3D 数字生命 ============ -->
+    <section id="life-3d" class="section dark-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">05 / LIVING GLYPH</p>
+          <h2>3D 数字生命</h2>
+        </div>
+        <p class="section-desc">字形不再是纸上的图像 —— 拖拽旋转、滚轮缩放，看一个字从混沌星尘中生长、呼吸，并沿五体演化变形。</p>
+      </div>
+      <div class="life-grid">
+        <div class="life-stage" id="lifeStage">
+          <div class="life-hud">
+            <span id="lifePhase">混沌星尘</span>
+            <span id="lifeEra">甲骨文</span>
+          </div>
+          <div class="life-hint">拖拽旋转 · 滚轮缩放</div>
+        </div>
+        <div class="life-panel">
+          <div class="life-block">
+            <span class="label">GLYPH · 选择汉字</span>
+            <div class="life-chars" id="lifeChars"></div>
+          </div>
+          <div class="life-block">
+            <span class="label">SCRIPT · 当前书体</span>
+            <div class="life-era-row">
+              <b id="lifeEraName">甲骨文</b>
+              <span id="lifeEraYear"></span>
+            </div>
+            <p class="life-era-desc" id="lifeEraDesc"></p>
+          </div>
+          <div class="life-block life-actions">
+            <button class="outline-btn" id="lifeTourBtn">⏸ 暂停巡演</button>
+            <button class="outline-btn" id="lifeEvolveBtn">⇢ 立即演化</button>
+            <button class="ghost-btn" id="lifeShotBtn">⤓ 导出视图 PNG</button>
+          </div>
+          <div class="life-block">
+            <span class="label">PARTICLES · 粒子生命体</span>
+            <p class="life-note">12000 粒子 · 距离场浮雕测厚 · 混沌—聚合—呼吸—演化 四相生命周期</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 数字展厅 ============ -->
+    <section id="gallery" class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">06 / DIGITAL GALLERY</p>
+          <h2>数字展厅</h2>
+        </div>
+        <p class="section-desc">你收藏的作品会保存在本机浏览器中，可随时导出。</p>
+      </div>
+      <div class="gallery-grid" id="galleryGrid">
+        <p class="gallery-empty">展厅还空着。去造字实验室生成并收藏一幅作品吧。</p>
+      </div>
+    </section>
+
+    <!-- ============ 关于 / 技术说明 ============ -->
+    <section id="about" class="section dark-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">07 / ABOUT THIS WORK</p>
+          <h2>关于这件作品</h2>
+        </div>
+        <p class="section-desc">技术路径、数据来源与必要的说明。</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <span class="label">HOW IT WORKS</span>
+          <h3>识别是怎么做到的</h3>
+          <ol class="about-steps">
+            <li><b>灰度与二值化</b> — Otsu 自适应阈值，自动判断黑白底极性</li>
+            <li><b>包围盒裁剪</b> — 连通域分析，去掉空白与噪点边框</li>
+            <li><b>归一化</b> — 缩放至 <span id="aboutNorm">96×96</span> 并居中，消除尺寸差异</li>
+            <li><b>卷积分类</b> — 三层 CNN 在 119 类上输出后验概率，温度校准后即为置信度</li>
+            <li><b>兜底通道</b> — 权重未加载时回落到 <span id="aboutGrid">16×16</span> 网格密度、骨架拓扑与几何特征比对</li>
+          </ol>
+          <p class="about-note">
+            全流程在浏览器本地完成，不依赖网络。卷积分类器为主通道，本地特征引擎为兜底；
+            若配置了云端视觉模型，则作为可选增强并行参与，失败自动回落，不影响演示。
+          </p>
+        </div>
+
+        <div class="about-card">
+          <span class="label">DATA &amp; DISCLAIMER</span>
+          <h3>字形来源与说明</h3>
+          <p>
+            本作品中的甲骨文、金文、小篆字形为<b>依据公开字书字形特征手绘的矢量示意</b>，
+            用于可视化演示与文化传播，<b>并非学术摹本</b>，不宜作为文字学研究的字形依据。
+          </p>
+          <p>
+            隶书、楷书调用系统衬线字体渲染。字义、字源与解读文本为面向普及的通俗表述。
+          </p>
+          <p class="about-note">
+            作品为纯前端实现，无后端、无第三方追踪、不上传任何图像数据；
+            收藏的作品仅保存在你本机的浏览器存储中。桌面版以独立应用窗口运行，
+            关闭窗口即自动结束本地服务。
+          </p>
+        </div>
+
+        <div class="about-card">
+          <span class="label">TECH STACK</span>
+          <h3>技术构成</h3>
+          <ul class="about-tags">
+            <li>原生 HTML / CSS / JavaScript</li>
+            <li>手写 SVG 矢量字形库</li>
+            <li>Canvas 2D 程序化绘画</li>
+            <li>离线卷积字形分类器 · 纯 JS 推理</li>
+            <li>OpenAI 兼容多模态模型接入</li>
+            <li>零依赖 · 零构建 · 离线可运行</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <p class="eyebrow">A LETTER CAN BE A LIVING THING.</p>
+      <h2>让文字重新被看见。</h2>
+      <p>作品已完成完整闭环：上传 → AI 分析 → 推测 → 还原 → 生成 → 3D 生命体。
+        119 个汉字的甲骨文、金文、小篆、隶书、楷书五体字形，皆可演化、可交互、可导出。</p>
+      <a class="primary-btn" href="#home">回到序章 ↑</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>一字千年 · AI 甲骨文数字生命馆　|　V1.0　|　© 2026 保留所有权利</span>
+    <span id="footerEngine">Local Vision Engine / Cloud Vision Ready</span>
+  </footer>
+
+  <!-- ============ AI 设置弹窗 ============ -->
+  <div class="modal-mask" id="cfgModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>AI 引擎设置</h3>
+        <button class="modal-close" id="cfgClose">×</button>
+      </div>
+      <p class="modal-desc">
+        填入任意 OpenAI 兼容的<b>视觉（多模态）</b>大模型即可启用云端识别；
+        留空则使用内置的离线卷积分类器（完全离线可用）。<br>
+        <em style="color:#c9614f">注意：必须是能"看图"的模型。</em>
+        纯文本模型（如 DeepSeek 的 deepseek-chat / v4-pro）收到图片会报错或直接答非所问。
+      </p>
+
+      <label>服务商预设</label>
+      <div class="preset-row" id="presetRow"></div>
+
+      <label>Base URL</label>
+      <input class="modal-input" id="cfgBase" placeholder="https://.../v1">
+
+      <label>模型名称</label>
+      <input class="modal-input" id="cfgModel" placeholder="qwen-vl-plus">
+
+      <label>API Key</label>
+      <input class="modal-input" id="cfgKey" type="password" placeholder="sk-...">
+
+      <label class="switch-row">
+        <input type="checkbox" id="cfgEnabled">
+        <span>启用云端模型（关闭则仅使用本地离线分类器）</span>
+      </label>
+
+      <div class="modal-actions">
+        <button class="ghost-btn" id="cfgTest">测试连接</button>
+        <button class="primary-btn" id="cfgSave">保存配置</button>
+      </div>
+      <p class="modal-tip" id="cfgTip"></p>
+    </div>
+  </div>
+
+  <!-- ============ 作品大图查看 ============ -->
+  <div class="modal-mask" id="lbModal">
+    <div class="lb-box">
+      <button class="modal-close" id="lbClose">×</button>
+      <img id="lbImg" alt="作品大图">
+      <div class="lb-meta">
+        <b id="lbTitle"></b>
+        <span id="lbSub"></span>
+        <a class="outline-btn" id="lbDownload" download>⤓ 下载</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="assets/js/three.min.js"></script>
+  <script src="assets/js/life3d.js"></script>
+  <script src="assets/js/glyphs-real.js"></script>
+  <script src="assets/js/glyphs.js"></script>
+  <script src="assets/js/vision.js"></script>
+  <script src="assets/js/obicnn.js"></script>
+  <script src="assets/js/ai.js"></script>
+  <script src="assets/js/art.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script>
+    // PWA：注册离线缓存（file:// 下不支持，自动跳过）
+    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+      addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch(() => { });
+      });
+    }
+  </script>
+</body>
+</html>
