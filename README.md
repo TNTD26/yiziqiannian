@@ -31,6 +31,18 @@
 7. **数字展厅** — 收藏与回放生成的作品
 8. **关于** — 技术路径、字形来源与免责声明
 
+## 界面
+
+![首页序章](docs/screenshots/01_首页序章.png)
+
+| 汉字探索 · 119 字 | AI 甲骨文识别馆 |
+|---|---|
+| ![汉字探索](docs/screenshots/02_汉字探索.png) | ![AI 识别](docs/screenshots/04_AI甲骨文识别馆.png) |
+| **识别结果 · 候选排序** | **AI 造字实验室** |
+| ![识别结果](docs/screenshots/05_AI识别结果演示.png) | ![造字实验室](docs/screenshots/06_AI造字实验室.png) |
+
+其余四张（文字演化 / 3D 数字生命 / 数字展厅 / 关于）见 [`docs/screenshots/`](docs/screenshots/)。
+
 ## 实测指标（独立留出集）
 
 | 测试集 | 结果 |
@@ -71,6 +83,8 @@ assets/
 source/launcher.py          桌面启动器（本地服务 + 独立窗口 + 生命周期）
 docs/                       作品文档（见下）
 ```
+
+> 仓库根目录的 `index.html` 是 GitHub Pages 入口：与 `START.html` 内容一致，仅额外附带 `og:image` 等社交预览元数据；它不属于交付包，交付包内的 `START.html` 与 `打开作品.html` 仍保持字节完全一致。
 
 ## 文档
 
