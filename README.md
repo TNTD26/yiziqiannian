@@ -107,13 +107,18 @@ HTML / CSS / JavaScript · WebGL2（Three.js r160）· 纯 JS 卷积推理 · Ca
 
 ## 许可与致谢
 
-- 软件主体（界面、交互、识别引擎、生成引擎、三维可视化、桌面启动器）由著作权人独立开发。
-- 第三方组件：Three.js r160（MIT）、Noto Serif SC / Outfit（SIL OFL 1.1），许可文本见 `assets/fonts/`。
-- 古文字字形源自开源字形数据集 Etymology-SVG，为依据公开字书特征绘制的矢量示意，用于科普演示，非学术摹本。
-- [HUST-OBC](https://doi.org/10.1038/s41597-024-03807-x) 数据集（CC BY-NC 4.0，Wang et al., *Scientific Data*, 2024）**仅用于离线模型训练**；原始图像未随本包分发，包内只含训练得到的模型权重。
+**自研部分（界面、交互、识别引擎、生成引擎、三维可视化、桌面启动器）以 [PolyForm Noncommercial License 1.0.0](LICENSE) 授权**：允许非商业的学习、教学、研究、公益与个人项目使用，**禁止商业使用**；商业授权需另行联系著作权人。全文见 [LICENSE](LICENSE)。
 
-权属划分详见 [源程序与著作权说明](docs/07_源程序与著作权说明.md)。
+> 选用它而非 MIT：本项目 CNN 权重训练自 [HUST-OBC](https://doi.org/10.1038/s41597-024-03807-x)（**CC BY-NC 4.0，禁商用**），MIT 的商用许可会与之直接冲突。
+
+第三方组件不适用上述许可，各自沿用原许可：
+
+- Three.js r160（MIT）、Noto Serif SC / Outfit（SIL OFL 1.1），许可文本见 `assets/fonts/`。
+- 古文字字形源自开源字形数据集 Etymology-SVG，为依据公开字书特征绘制的矢量示意，用于科普演示，非学术摹本。
+- HUST-OBC 数据集（CC BY-NC 4.0，Wang et al., *Scientific Data*, 2024）**仅用于离线模型训练**；原始图像未随本包分发，包内只含训练得到的模型权重。
+
+权属划分详见 [源程序与著作权说明](docs/07_源程序与著作权说明.md) 第五节。
 
 ---
 
-© 2026 王博彦. 本作品为参赛/著作权登记作品，源代码公开仅为学习交流，未经许可不得商用。
+© 2026 王博彦. 本作品为参赛 / 软件著作权登记作品；自研代码以 PolyForm Noncommercial License 1.0.0 授权，禁止商业使用。
