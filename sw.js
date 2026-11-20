@@ -6,7 +6,7 @@
  * 字体已随包本地化，无 CDN 依赖；桌面版由本地服务直接提供全部资源。
  * ============================================================ */
 
-const VERSION = "yiziqian-desktop-v1";
+const VERSION = "yiziqian-desktop-v2";
 const ASSETS = [
   "./",
   "./START.html",
