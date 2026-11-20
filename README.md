@@ -6,6 +6,8 @@
 
 桌面应用软件 V1.0 · Windows 10/11
 
+> 软件登记全称：**一字千年AI甲骨文数字生命馆软件 V1.0**（软件著作权登记申请表以此为准；「一字千年」为软件简称）
+
 **[🌐 在线体验](https://tntd26.github.io/yiziqiannian/)**（浏览器直接打开，无需下载）　|　**[📦 下载桌面版 V1.0](https://github.com/TNTD26/yiziqiannian/releases/tag/v1.0)**
 
 ---
